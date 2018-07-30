@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    <h1 class="page-header">路由授权</h1>
+{% endblock %}
+
+{% block trend %}
+
+
+
+
+    <form method="POST" action="/route/add_rule/" novalidate>
+        {% csrf_token %}
+        <div class="form-group" style="margin-left: 25%;">
+            <label for="exampleInputName2">用户名</label>
+            {{ obj.userinfo_id }}
+{#            <span>{{ obj.errors.name.0 }}</span>#}
+        </div>
+        <div class="form-group" style="margin-left: 25%;">
+            <label for="exampleInputName2">路由策略</label>
+            {{ obj.routemgr_id }}
+        </div>
+
+
+
+        <button type="submit" class="btn btn-default" style="margin-left: 25%;">Submit</button>
+    </form>
+
+
+{% endblock %}
+

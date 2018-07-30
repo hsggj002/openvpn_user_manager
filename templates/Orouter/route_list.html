@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h1 class="page-header">路由策略</h1>
+{% endblock %}
+
+{% block trend %}
+<div id="page-content">
+
+
+                <div class="" style="margin-bottom: 7px;">
+                        <a href="/vpnroute/add_route/" class="btn btn-sm btn-primary "> 添加路由 </a>
+                        <a href="/del-all/" class="btn btn-sm btn-danger " disabled="ture"> 删除所选 </a>
+
+
+                    </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-3"></div>
+{#                    <form action="/index/" method="post" class="form-inline">#}
+{#                        {% csrf_token %}#}
+{#                    </form>#}
+
+{#                    <button type="button" class="btn btn-primary" style="margin-bottom: 7px;">添加用户</button>#}
+                    <table class="table table-striped table-bordered table-hover">
+                        <tr>
+                            <th class="text-center"><input type="checkbox" id="check_all"></th>
+                            <th class="text-center">名称</th>
+                            <th class="text-center">路由策略</th>
+{#                            <th class="text-center">部门</th>#}
+{#                            <th class="text-center">备注</th>#}
+                            <th class="text-center">操作</th>
+                        </tr>
+                        {% for foo in routers.object_list %}
+                        <tr>
+                            <td class="text-center"><input type="checkbox" value="{{ route.id }}"></td>
+                            <td class="text-center">{{ foo.name }}</td>
+                            <td class="text-center">{{ foo.tactful }}</td>
+{#                            <td class="text-center">{{ foo.depaer.name }}</td>#}
+{#                            <td class="text-center">{{ foo.mark }}</td>#}
+                            <td class="text-center">
+                                <a href="/vpnroute/r_edit-id={{ foo.id }}" class="btn btn-xs btn-info">编辑</a>
+                                <a href="/vpnroute/r_delete-id={{ foo.id }}" class="btn btn-xs btn-danger">删除</a>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="dataTables_info" id="editable_info" role="status" aria-live="polite">
+                                Showing {{ users.start_index }} to {{ users.end_index }} of {{ p.count }} entries
+                            </div>
+                        </div>
+                        {% include 'include/paginator.html' %}
+                    </div>
+                </div>
+
+            </div>
+
+
+
+{#                <div class="col-sm-12" style="text-align: center;">#}
+{#                    <nav aria-label="...">#}
+{#                      <ul class="pagination">#}
+{#                          {{ page_str|safe }}#}
+{##}
+{#                      </ul>#}
+{#                    </nav>#}
+{##}
+{##}
+{#                </div>#}
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    <h1 class="page-header">用户列表</h1>
+{% endblock %}
+
+{% block trend %}
+
+
+
+    <form method="POST" action="/vpngroup/add_group/" novalidate>
+        {% csrf_token %}
+        <div class="form-group" style="margin-left: 25%;">
+            <label for="exampleInputName2">组名</label>
+            {{ obj.name }}
+            <span>{{ obj.errors.name.0 }}</span>
+        </div>
+        <div class="form-group" style="margin-left: 25%;">
+            <label for="exampleInputName2">路由策略</label>
+            {{ obj.routemgr_id }}
+        </div>
+        <div class="form-group" style="margin-left: 25%;">
+            <label for="exampleInputName2">备注</label>
+            {{ obj.comment }}
+        </div>
+
+
+
+        <button type="submit" class="btn btn-default" style="margin-left: 25%;">Submit</button>
+    </form>
+
+
+
+
+{% endblock %}

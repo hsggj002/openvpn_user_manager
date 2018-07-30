@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    <h1 class="page-header">用户列表</h1>
+{% endblock %}
+
+
+{% block trend %}
+
+
+
+    <form method="post" action="/edit-id={{ nid }}" novalidate>
+        {% csrf_token %}
+        <div class="form-group" style="margin-left: 25%;">
+            <label for="exampleInputName2">姓名</label>
+            {#            <input type="text" class="form-control" name="name" placeholder="姓名" style="width: 50%;">#}
+            {{ obj.name }}
+            <span>{{ obj.errors.name.0 }}</span>
+        </div>
+        <div class="form-group" style="margin-left: 25%;">
+            <label for="exampleInputName2">邮箱账号</label>
+            {#            <input type="text" class="form-control" name="username" placeholder="用户名" style="width: 50%;">#}
+            {{ obj.account }}
+            <span style="color: red;">{{ obj.errors.account.0 }}</span>
+        </div>
+        <div class="form-group" style="margin-left: 25%;">
+            <label for="exampleInputName2">密码</label>
+            {#            <input type="text" class="form-control" name="username" placeholder="用户名" style="width: 50%;">#}
+            {{ obj.password }}
+            <span>{{ obj.errors.password.0 }}</span>
+        </div>
+        <div class="form-group address" id="second" style="margin-left: 25%;display:block;">
+            <label for="exampleInputName2">IP地址</label>
+{#                        <input type="password" class="form-control" name="pwd" placeholder="密码" style="width: 50%;">#}
+            {{ obj.address_id }}
+            <span>{{ obj.errors.address_id.0 }}</span>
+        </div>
+        <div class="form-group depa" id="first" style="margin-left: 25%;" onchange="checkip()">
+            <label for="exampleInputName2">部门</label>
+            {{ obj.depaer_id }}
+            <span>{{ obj.errors.depaer_id.0 }}</span>
+        </div>
+
+
+        <button type="submit" class="btn btn-default" style="margin-left: 25%;">Submit</button>
+    </form>
+
+
+
+
+{% endblock %}
+{#{% block scripts %}#}
+{#    <script>#}
+{#        function checkip() {#}
+{#            var a = $('#first option:selected').val();#}
+{#            if (a !=1){#}
+{#                document.getElementById("second").style.display = 'none';#}
+{#                document.getElementById("second1").style.display = 'none';#}
+{#            } else {#}
+{#                document.getElementById("second").style.display = 'block';#}
+{#                document.getElementById("second1").style.display = 'block';#}
+{#            }#}
+{#        }#}
+{##}
+{#    </script>#}
+{#{% endblock %}#}

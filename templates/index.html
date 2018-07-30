@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h1 class="page-header">主面板</h1>
+{% endblock %}
+{##}
+{#{% block wel_user %}#}
+{#    <ul class="nav navbar-top-links pull-right">#}
+{#        <li style="margin-top: 10px;margin-right: 18px; color: #827cff;">#}
+{#            <h4><span id="i1"></span></h4>#}
+{#        </li>#}
+{#        <li style="margin-top: 10px;margin-right: 18px">#}
+{#            <h4><span class="lang-selector dropdown-toggle">Welcome{{ request.users.username }}</span></h4>#}
+{#        </li>#}
+{#        <li>#}
+{#            <a href="{% url 'logout' %}">#}
+{#                <h4><i class="fa fa-sign-out"></i> Log out</h4>#}
+{#            </a>#}
+{#        </li>#}
+{#    </ul>#}
+{#{% endblock %}#}
+
+
+
+{% block bodys %}
+{#<div class="row" style="padding: 27px;">#}
+<div class="wrapper wrapper-content">
+        <div class="col-sm-3" style="background-color: #ffffff;margin: 20px">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right">Users</span>
+                    <h5>用户总数</h5>
+                </div>
+                <div class="ibox-content" style="background-color: #ffffff">
+                    <h1 class="no-margins"><a href="/user_list/">{{ users.count}}</a></h1>
+                    <small>All user</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3" style="background-color: #ffffff;margin: 20px">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary pull-right">Online</span>
+                    <h5>在线用户</h5>
+                </div>
+                <div class="ibox-content" style="background-color: #ffffff">
+                    <h1 class="no-margins"><a href="#"> <span id="online_users">{{ user_num | length }}</span></a></h1>
+                    <div class="stat-percent font-bold text-navy">{{ percent_online_user }} <i class="fa fa-level-up"></i></div>
+                    <small>Online user</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3" style="background-color: #ffffff;margin: 20px">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-danger pull-right">Failed</span>
+                    <h5>失败用户数</h5>
+                </div>
+                <div class="ibox-content" style="background-color: #ffffff">
+                    <h1 class="no-margins"><a href="#"> <span id="failed_users">{{ error_num | length }}</span></a></h1>
+                    <div class="stat-percent font-bold text-navy">{{ percent_online_user }} <i class="fa fa-level-up"></i></div>
+                    <small>Online user</small>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+
+{% block trend %}
+<div id="main" style="width: 70%;height: 400px;"></div>
+        <!--Chart information-->
+{% endblock %}

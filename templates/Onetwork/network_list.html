@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load MyTag %}
+
+{% block title %}
+<h1 class="page-header">网络地址列表</h1>
+{% endblock %}
+
+
+
+
+{% block trend %}
+
+
+<div id="page-content">
+
+
+                <div class="" style="margin-bottom: 7px;">
+                        <a href="/vpnnetwork/add_network/" class="btn btn-sm btn-primary "> 添加地址 </a>
+                        <a href="/del-all/" class="btn btn-sm btn-danger " disabled="ture"> 删除所选 </a>
+                        <form id="search_form" method="get" action="" class="pull-right mail-search">
+                            <div class="input-group" style="width: 260px;">
+                                <input type="text" class="form-control input-sm" id="search_input" name="keyword" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button id="search_btn" type="submit" class="btn btn-sm btn-primary">
+                                        -搜索-
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+                    </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-3"></div>
+{#                    <form action="/index/" method="post" class="form-inline">#}
+{#                        {% csrf_token %}#}
+{#                    </form>#}
+
+{#                    <button type="button" class="btn btn-primary" style="margin-bottom: 7px;">添加用户</button>#}
+                    <table class="table table-striped table-bordered table-hover">
+                        <tr>
+                            <th class="text-center"><input type="checkbox" id="check_all"></th>
+{#                            <th class="text-center">组名</th>#}
+                            <th class="text-center">ip地址</th>
+                            <th class="text-center">网络地址</th>
+{#                            <th class="text-center">备注</th>#}
+                            <th class="text-center">操作</th>
+                        </tr>
+                        {% for foo in networks.object_list %}
+                        <tr>
+                            <td class="text-center"><input type="checkbox" value="{{ foo.id  }}"></td>
+                            <td class="text-center">{{ foo.addrname }}</td>
+                            <td class="text-center">{{ foo.gw_addrname }}</td>
+{#                            <td class="text-center">#}
+{#                                <a href="#"> {{ foo.mark }}</a>#}
+{#                            </td>#}
+                            <td class="text-center">
+                                <a href="/vpnnetwork/n_edit-id={{ foo.id }}" class="btn btn-xs btn-info">编辑</a>
+                                <a href="/vpnnetwork/n_delete-id={{ foo.id }}" class="btn btn-xs btn-danger">删除</a>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="dataTables_info" id="editable_info" role="status" aria-live="polite">
+                                Showing {{ users.start_index }} to {{ users.end_index }} of {{ p.count }} entries
+                            </div>
+                        </div>
+                        {% include 'include/paginator.html' %}
+                    </div>
+                </div>
+
+            </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('#check_all').click(function () {
+            $('input').prop('checked',!$('input').prop('checked'))
+        })
+    </script>
+
+
+{% endblock %}
